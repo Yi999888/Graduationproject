@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录/注册</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet"  th:href="@{/css/login.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body >
+<div class="container" >
+    <div class="form row">
+        <div class="form-horizontal col-md-offset-1 tang-pass-login">
+            <form action="/login" method="post">
+                <h3></h3>
+                <!--<h3 class="form-title unselectable">LOGIN</h3>-->
+                <h2><a th:href="login">登录</a>/<a th:href="register">注册</a></h2>
+                <div class="col-md-11">
+                    <div class="form-group margin">
+                        <i class="fa fa-user fa-lg"></i>
+                        <input class="form-control required unselectable" type="text" placeholder="用户名"
+                               id="username" name="username" autofocus="autofocus" maxlength="36" autocomplete="off" onblur="isUsername(this.value)"/>
+                    </div>
+                    <div class="form-group">
+                        <i class="fa fa-lock fa-lg"></i>
+                        <input class="form-control required unselectable" type="password" placeholder="密码"
+                               id="password1" name="password"  maxlength="18" autocomplete="off"/>
+                    </div>
+                    <div class="form-group">
+                        <i class="fa fa-lock fa-lg"></i>
+                        <input class="form-control required unselectable" type="password" placeholder="确认密码"
+                               id="password2" name="password"  maxlength="18" autocomplete="off"/>
+                    </div>
+                    <div class="form-group col-md-offset-9">
+                        <button  class="pass-button pass-button-submit unselectable" type="submit" onclick="return checkSubmit()">注册
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+</body>
+<SCRIPT type="text/javascript">
+        function isUsername(un) {
+               if (un.search(/^[a-zA-Z0-9_]{1,20}$/) != -1) return true;
+              else {
+                     alert("用户名只能由1～20位长度的数字、英文字母或者下划线组成");
+                   return false;
+                 }
+        }
+     function checkSubmit() {
+               if (document.getElementById("username").value == "") {
+                    alert("请填写用户名!");
+                   return false;
+                }
+         var pwd1 = document.getElementById("password1");
+         var pwd2 = document.getElementById("password2");
+               if (pwd1.value == "") {
+                      alert("请填写密码!");
+                     return false;
+                 }
+             if (pwd2.value == "") {
+                       alert("请再次填写密码!");
+                     return false;
+                 }
+             if (pwd1.value != pwd2.value) {
+                     alert("密码不一致");
+                     return false;
+                  }
+           }
+</SCRIPT>
+</html>

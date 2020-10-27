@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="biyesheji.mapper.AdminMapper">
+    <select id="findAll"  resultType="User">
+        select * from t_user
+    </select>
+    <delete id="DeleteById" parameterType="Integer" >
+        delete from t_user where id=#{id}
+    </delete>
+    <insert id="InsertData" parameterType="User">
+        insert into t_user(username,password,created,valid) value (#{username},#{password},#{created},#{valid})
+    </insert>
+    <update id="updateUser" parameterType="User">
+        update t_user set username=#{username},password=#{password},name=#{name} where id=#{id}
+    </update>
+    <select id="findByid" parameterType="Integer" resultType="User">
+       SELECT * FROM t_user WHERE id =#{id}
+    </select>
+
+</mapper>
