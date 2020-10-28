@@ -15,8 +15,13 @@ class DemoApplicationTests {
     void contextLoads() {
 //        PageInfo<User> allUserByPage = administrationRepository.findAllUserByPage(1, 5);
 //        System.out.println(allUserByPage);
-        PageInfo<User> allUserByPage = administrationRepository.findAllUserByPage(1, 1);
-        System.out.println(allUserByPage);
+//        PageInfo<User> allUserByPage = administrationRepository.findAllUserByPage(1, 1);
+//        System.out.println(allUserByPage);
+        User user=new User();
+        user.setPassword("321");
+        user.setUsername("321");
+
+        administrationRepository.saveOrUpdate(user);
     }
 
 }
