@@ -16,6 +16,10 @@
                 <h3></h3>
                 <!--<h3 class="form-title unselectable">LOGIN</h3>-->
                 <h2><a href="login">登录</a>/<a href="register">注册</a></h2>
+                <div class="error_tip" th:if="${param.error}">
+                    <span th:text="用户名或密码错误" class="help-block" style="color:red;"></span>
+                </div>
+<!--                <p style="color: red;" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>-->
                 <div class="col-md-11">
                     <div class="form-group margin">
                         <i class="fa fa-user fa-lg"></i>

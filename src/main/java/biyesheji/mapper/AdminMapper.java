@@ -2,7 +2,6 @@ package biyesheji.mapper;
 
 import biyesheji.domain.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -18,4 +17,6 @@ public interface AdminMapper {
     Integer updateUser(User user);
     //由id查找
     User findById(Integer id);
+    //根据用户名查找
+    User findByUsername(String username);
 }

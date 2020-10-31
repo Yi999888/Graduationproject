@@ -16,4 +16,6 @@ public interface AdministrationRepository {
     User getUserById(Integer id);
     //获取用户列表
     List<User> list();
+    //根据用户名查找用户
+    User getByUsername(String username);
 }

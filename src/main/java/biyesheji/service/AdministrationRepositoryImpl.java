@@ -53,4 +53,9 @@ public class AdministrationRepositoryImpl implements AdministrationRepository {
     public List<User> list() {
         return adminMapper.findAll();
     }
+    //根据用户名查找
+    @Override
+    public User getByUsername(String username) {
+        return adminMapper.findByUsername(username);
+    }
 }

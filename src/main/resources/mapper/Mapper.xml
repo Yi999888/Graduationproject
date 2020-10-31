@@ -13,8 +13,10 @@
     <update id="updateUser" parameterType="User">
         update t_user set username=#{username},password=#{password},name=#{name} where id=#{id}
     </update>
-    <select id="findByid" parameterType="Integer" resultType="User">
+    <select id="biyesheji.mapper.AdminMapper.findById" parameterType="Integer" resultType="User">
        SELECT * FROM t_user WHERE id =#{id}
     </select>
-
+    <select id="findByUsername"  parameterType="String" resultType="User">
+        select * from t_customer where username=#{username}
+    </select>
 </mapper>

@@ -1,11 +1,11 @@
 package biyesheji.domain;
 
 public class User {
-    Long id;
-    String username;
-    String password;
-    String created;
-    Long valid;
+    Long id;//用户ID
+    String username;//用户名
+    String password;//密码
+    String created;//创建时间
+    Long valid;//权限
 
     @Override
     public String toString() {
