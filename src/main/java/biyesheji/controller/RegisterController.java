@@ -39,4 +39,20 @@ public class RegisterController {
             return "redirect:/register";
         }
     }
+    //管理员页面注册功能
+    @PostMapping("/PopUp")
+    public String PopUp(User user,Model model){
+        //进行BCrypt密码加密
+        String hashpw = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashpw);
+        System.out.println(administrationRepository.getByUsername(user.getUsername()));
+        //判断一下用户名是否存在
+        if (administrationRepository.getByUsername(user.getUsername()) == null) {
+            administrationRepository.saveOrUpdate(user);
+            return "redirect:/admin";
+        }else {
+            model.addAttribute("msg","用户名已存在");
+            return "redirect:/admin";
+        }
+    }
 }

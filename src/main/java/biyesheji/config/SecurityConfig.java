@@ -45,7 +45,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login","/login.html","/css/**","/img/**","/js/**","/register.html","/register").permitAll()
                 .antMatchers("/user/**").hasRole("user")
                 .antMatchers("/admin/**").hasRole("admin")
-                .antMatchers("/author/**").hasRole("author")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -81,7 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     if(isAdmin){
                         httpServletResponse.sendRedirect("/admin");
                     }else {
-                        httpServletResponse.sendRedirect("/admin");
+                        httpServletResponse.sendRedirect("/user");
                     }
                 }
             }
