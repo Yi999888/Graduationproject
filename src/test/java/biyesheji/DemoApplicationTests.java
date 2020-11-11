@@ -1,5 +1,6 @@
 package biyesheji;
 
+import biyesheji.domain.Jurisdiction;
 import biyesheji.domain.User;
 import biyesheji.mapper.AdminMapper;
 import biyesheji.service.AdministrationRepository;
@@ -45,7 +46,6 @@ class DemoApplicationTests {
 //        for (User user : shitou) {
 //            System.out.println(user);
 //        }
-        System.out.println(mapper.findByUsername("shitou"));
     }
    // $2a$10$HNfTfH3aMFTeCWNTpPfYe.KkJzWxYYMw2VDV2ULl9PCal6qVsJwfO
 }
