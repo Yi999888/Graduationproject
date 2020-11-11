@@ -2,21 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="biyesheji.mapper.AdminMapper">
     <select id="findAll"  resultType="User">
-        select * from t_user
+        select * from t_customer
     </select>
     <delete id="DeleteById" parameterType="Integer" >
-        delete from t_user where id=#{id}
+        delete from t_customer where id=#{id}
     </delete>
     <insert id="InsertData" parameterType="User">
-        insert into t_user(username,password,created,valid) value (#{username},#{password},#{created},#{valid})
+        insert into t_customer(username,password,created,valid) value (#{username},#{password},#{created},#{valid})
     </insert>
     <update id="updateUser" parameterType="User">
-        update t_user set username=#{username},password=#{password},name=#{name} where id=#{id}
+        update t_customer set username=#{username},password=#{password},name=#{name} where id=#{id}
     </update>
     <select id="biyesheji.mapper.AdminMapper.findById" parameterType="Integer" resultType="User">
-       SELECT * FROM t_user WHERE id =#{id}
+       SELECT * FROM t_customer WHERE id =#{id}
     </select>
     <select id="findByUsername"  parameterType="String" resultType="User">
         select * from t_customer where username=#{username}
     </select>
+    <select id="getMaxId" resultType="Long">
+        select id from  t_customer order by id desc limit 1;
+    </select>
+    <insert id="InsertT_customer_authorityData" parameterType="Jurisdiction">
+        insert into t_customer_authority(customer_id,authority_id) value (#{customer_id},#{authority_id})
+    </insert>
+    <delete id="DeleteT_customer_authorityById" parameterType="Integer" >
+        delete from t_customer_authority where customer_id=#{id}
+    </delete>
 </mapper>

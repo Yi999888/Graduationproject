@@ -1,5 +1,6 @@
 package biyesheji.mapper;
 
+import biyesheji.domain.Jurisdiction;
 import biyesheji.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -19,4 +20,10 @@ public interface AdminMapper {
     User findById(Integer id);
     //根据用户名查找
     User findByUsername(String username);
+    //获取ID最大值
+    Long getMaxId();
+    //在t_customer_authority表插入一条数据
+    Integer InsertT_customer_authorityData(Jurisdiction Jurisdiction);
+    //t_customer_authority表由id删除
+    Integer DeleteT_customer_authorityById(Integer id);
 }

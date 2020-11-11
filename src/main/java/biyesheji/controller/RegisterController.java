@@ -32,6 +32,7 @@ public class RegisterController {
         user.setPassword(hashpw);
         //判断一下用户名是否存在
         if (administrationRepository.getByUsername(user.getUsername()) == null) {
+
             administrationRepository.saveOrUpdate(user);
             return "login";
         }else {
@@ -45,7 +46,6 @@ public class RegisterController {
         //进行BCrypt密码加密
         String hashpw = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
         user.setPassword(hashpw);
-        System.out.println(administrationRepository.getByUsername(user.getUsername()));
         //判断一下用户名是否存在
         if (administrationRepository.getByUsername(user.getUsername()) == null) {
             administrationRepository.saveOrUpdate(user);
