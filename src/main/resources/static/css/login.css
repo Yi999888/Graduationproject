@@ -3,6 +3,13 @@ body {
     background: url('../img/login_bg.jpg');
     animation-name: myfirst;
 }
+#VerificationCode{
+    display:inline-block;
+}
+#canvas{
+    display:inline-block;
+    /*float: right;*/
+}
 /*登录框*/
 .form {
     background: rgba(255, 255, 255, 0.2);
