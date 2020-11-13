@@ -1,17 +1,9 @@
 package biyesheji;
 
-import biyesheji.domain.Jurisdiction;
-import biyesheji.domain.User;
 import biyesheji.mapper.AdminMapper;
-import biyesheji.service.AdministrationRepository;
-import com.alibaba.druid.sql.visitor.functions.Char;
-import com.github.pagehelper.PageInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCrypt;
-
-import java.util.List;
 
 @SpringBootTest
 class DemoApplicationTests {
