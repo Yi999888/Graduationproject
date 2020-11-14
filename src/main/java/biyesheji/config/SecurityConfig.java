@@ -77,9 +77,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     // 直接登录的用户，根据用户角色分别重定向到后台首页和前台首页
                     Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
                     boolean isAdmin = authorities.contains(new SimpleGrantedAuthority("ROLE_admin"));
+                    boolean isUser =authorities.contains(new SimpleGrantedAuthority("ROLE_user"));
                     if(isAdmin){
                         httpServletResponse.sendRedirect("/admin");
-                    }else {
+                    }
+                    if (isUser){
                         httpServletResponse.sendRedirect("/user");
                     }
                 }
