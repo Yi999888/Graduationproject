@@ -12,4 +12,20 @@ public class UserController {
     public ModelAndView home(){
         return new ModelAndView("user/home");
     }
+    @GetMapping("/about")
+    public ModelAndView about(){
+        return new ModelAndView("user/about");
+    }
+    @GetMapping("/archive")
+    public ModelAndView archive(){
+        return new ModelAndView("user/archive");
+    }
+    @GetMapping("/tags")
+    public ModelAndView tags(){
+        return new ModelAndView("user/tags");
+    }
+    @GetMapping("/works")
+    public ModelAndView works(){
+        return new ModelAndView("user/works");
+    }
 }
