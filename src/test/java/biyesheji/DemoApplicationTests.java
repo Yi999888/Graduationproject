@@ -4,6 +4,7 @@ import biyesheji.mapper.AdminMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootTest
 class DemoApplicationTests {
@@ -11,6 +12,16 @@ class DemoApplicationTests {
     private   AdminMapper mapper;
     @Test
     void contextLoads() {
+        BCryptPasswordEncoder bcp = new BCryptPasswordEncoder();
+        String mm_pub = "123456";
+        String mm_encode = bcp.encode(mm_pub);
+        System.out.println(mm_encode);
+        //bcp.matches(mm_pub,mm_encode)，第一个参数是前端传递过来的明文密码，如123456，第二个参数是添加用户时存储的密码
+        if(bcp.matches(mm_pub,mm_encode)){
+            System.out.println("密码校验成功");
+        }else {
+            System.out.println("密码错误");
+        }
 //        PageInfo<User> allUserByPage = administrationRepository.findAllUserByPage(1, 5);
 //        System.out.println(allUserByPage);
 //        PageInfo<User> allUserByPage = administrationRepository.findAllUserByPage(1, 1);

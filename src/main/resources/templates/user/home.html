@@ -12,11 +12,11 @@
 				<div class="tl">Keep Coding</div>
 				<div class="tr">
 					<ul class="ur">
-						<li><a th:href="@{user}">首页</a></li>
-						<li><a th:href="@{user/about}">关于</a></li>
-						<li><a th:href="@{user/archive}">档案文件</a></li>
-						<li><a th:href="@{user/tags}">标签</a></li>
-						<li><a th:href="@{user/works}">作品</a></li>
+						<li><a th:href="@{'user'}">首页</a></li>
+						<li><a th:href="@{'user/about'}">关于</a></li>
+						<li><a th:href="@{'user/archive'}">档案文件</a></li>
+						<li><a th:href="@{'user/tags'}">标签</a></li>
+						<li><a th:href="@{'user/works'}">作品</a></li>
 						<li>
 							<form th:action="@{/logout}" method="post">
 								<input type="submit" value="退出"/>

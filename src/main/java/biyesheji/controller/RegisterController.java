@@ -4,6 +4,7 @@ import biyesheji.domain.User;
 import biyesheji.service.AdministrationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +28,9 @@ public class RegisterController {
     //实现注册功能、注册完成跳转到登录页面
     @PostMapping
     public String register(User user,Model model){
+        BCryptPasswordEncoder bcp = new BCryptPasswordEncoder();
         //进行BCrypt密码加密
-        String hashpw = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        String hashpw = bcp.encode(user.getPassword());
         user.setPassword(hashpw);
         //判断一下用户名是否存在
         if (administrationRepository.getByUsername(user.getUsername()) == null) {
@@ -43,8 +45,9 @@ public class RegisterController {
     //管理员页面注册功能
     @PostMapping("/PopUp")
     public String PopUp(User user,Model model){
+        BCryptPasswordEncoder bcp = new BCryptPasswordEncoder();
         //进行BCrypt密码加密
-        String hashpw = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        String hashpw = bcp.encode(user.getPassword());
         user.setPassword(hashpw);
         //判断一下用户名是否存在
         if (administrationRepository.getByUsername(user.getUsername()) == null) {

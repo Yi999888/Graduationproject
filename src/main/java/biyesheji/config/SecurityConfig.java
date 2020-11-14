@@ -62,18 +62,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin().successHandler(new AuthenticationSuccessHandler() {
             @Override
             public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-                String url = httpServletRequest.getParameter("url");
-                // 获取被拦截的原始访问路径
-                RequestCache requestCache = new HttpSessionRequestCache();
-                SavedRequest savedRequest = requestCache.getRequest(httpServletRequest,httpServletResponse);
-                if(savedRequest !=null){
-                    // 如果存在原始拦截路径，登录成功后重定向到原始访问路径
-                    httpServletResponse.sendRedirect(savedRequest.getRedirectUrl());
-                } else if(url != null && !url.equals("")){
-                    // 跳转到之前所在页面
-                    URL fullURL = new URL(url);
-                    httpServletResponse.sendRedirect(fullURL.getPath());
-                }else {
+//                String url = httpServletRequest.getParameter("url");
+//                // 获取被拦截的原始访问路径
+//                RequestCache requestCache = new HttpSessionRequestCache();
+//                SavedRequest savedRequest = requestCache.getRequest(httpServletRequest,httpServletResponse);
+//                if(savedRequest !=null){
+//                    // 如果存在原始拦截路径，登录成功后重定向到原始访问路径
+//                    httpServletResponse.sendRedirect(savedRequest.getRedirectUrl());
+//                } else if(url != null && !url.equals("")){
+//                    // 跳转到之前所在页面
+//                    URL fullURL = new URL(url);
+//                    httpServletResponse.sendRedirect(fullURL.getPath());
+//                }else {
                     // 直接登录的用户，根据用户角色分别重定向到后台首页和前台首页
                     Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
                     boolean isAdmin = authorities.contains(new SimpleGrantedAuthority("ROLE_admin"));
@@ -84,7 +84,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     if (isUser){
                         httpServletResponse.sendRedirect("/user");
                     }
-                }
+//                }
             }
         });
         http.logout();
